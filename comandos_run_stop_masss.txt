@@ -1,0 +1,40 @@
+Descargar mysql_workbench
+https://downloads.mysql.com/archives/workbench/
+Descargar mysql community version 8.0.26
+https://downloads.mysql.com/archives/community/
+
+GUIA: 
+https://gotask.net/tutorials/how-to-manually-setup-mysql-on-windows/
+
+Crear una carpeta "data" a la misma altuta que la carpeta bin, del mysql-8.0.26-winx64.zip
+Si falla, vaciar la carpeta data, debe estar vacia, antes de ejecutar comandos
+
+1
+mysqld.exe --console --initialize  TE DARÁ UNA PASS TEMPORAL
+
+2 RUN
+mysqld --console
+
+3 ejecutar MySQL desde CMD
+mysql.exe -u root -p
+
+4 probar comando sql
+show databases;
+
+5 cambiar password, una vez dentro de mysql desde cmd
+alter user 'root'@'localhost' identified by 'nuevaPass';
+
+6 Installing as a Windows Service
+Quit the mysqld process by pressing CTRL+X in the command prompt window.
+In the command line, type: mysqld.exe --install
+You should get a confirmation message: Service successfully installed.
+In order to start the service, type: net start MySql 
+
+7 Running as a Console Application
+In case you dont want to install MySql as a Windows service, you can run it as a console application in the logon process. Note that MySql will not run until you logon on to the machine.
+In Windows Files Explorer, type C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup in the address bar. This will open the Windows startup folder that includes exe/bat files that will automatically run when the user is logged on.
+Create a new bat file, runmysql.bat.
+Put the following line in the file:
+call c:\MySql\bin\mysqld --console
+
+Note that you can not run both, the server and the console application simultaneously unless you change the MySql listening port.
